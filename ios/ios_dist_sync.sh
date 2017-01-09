@@ -1,8 +1,8 @@
 #!/bin/sh
 
-DST_TOP_DIR="../../ios/managed"
+DST_TOP_DIR="../../ios/ManagedWhisper"
 SRC_DIR=./_dist
-DST_DIR=${DST_TOP_DIR}/distribution
+DST_DIR=${DST_TOP_DIR}/NativeDistribution
 
 if [ ! -d "${DST_TOP_DIR}" ]; then
     echo "Error, script should run in wicore5.0/build directory"
@@ -18,7 +18,7 @@ done
 fi
 
 update_library() {
-    for lib in cjson crypto ssl neon paho-mqtt3cs z ; do
+    for lib in cjson crypto ssl neon paho-mqtt3cs z pj pjlib-util pjnath pjmedia sodium wmcommon wmcore wmsession wmportforwarding ; do
         echo "Copying library $lib to $2"
         cp -f $1/lib$lib.a $2/. 
     done
