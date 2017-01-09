@@ -3,8 +3,7 @@
 USR="stiartsly"
 if [ x"$1" != x ]; then
     USR=$1
-fi
-
+fi 
 case $USR in
     "stiartsly")
         LOGIN="stiartsly@gmail.com"
@@ -40,7 +39,7 @@ export ${LD_ENV}=${HOME}/workspace/wicore5.0/build/_dist/${HOST}-x86_64/debug/li
     --appkey="6tzPPAgSACJdScX79wuzMNPQTWkRLZ4qEdhLcZU6q4B9" \
     --apiserver="https://192.168.3.182:8443/web/api" \
     --mqttserver="ssl://192.168.3.182:8883" \
-    --truststore="whisper.pem" \
+    --truststore="../../certs/whisper.pem" \
     --logleve=4 \
     --deviceid="linux-platform-${USR}" \
     --data-location="${PWD}/${USR}" \
