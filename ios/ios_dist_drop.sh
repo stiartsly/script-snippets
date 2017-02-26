@@ -9,7 +9,7 @@ build_ios_dist() {
 }
 
 drop_dist_headers() {
-    FILES="whisper.h whisper_ext.h whisper_portforwarding.h"
+    FILES="whisper.h whisper_ext.h whisper_portforwarding.h whisper_session.h"
 
     for f in ${FILES}; do
         echo "Copying header $f from $1 to $2"

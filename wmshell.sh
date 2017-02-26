@@ -15,7 +15,6 @@ case "$(uname -s)" in
 esac
 
 USR=stiartsly
-SRV=local
 SSL=false
 
 while [ x"$1" != x ]; do
@@ -24,14 +23,11 @@ case $1 in
         shift
         USR=$1
         ;;
-    "-r")
-        SRV=remote
-        ;;
     "-s")
         SSL=true
         ;;
     *)
-        echo "Usage: $0 [-r|-l|-s] -u username"
+        echo "Usage: $0 [-s] -u username"
         echo "username: xu | stiartsly"
         echo ""
         exit 1;;
@@ -51,19 +47,8 @@ case $USR in
         exit 1;;
 esac
 
-case ${SRV} in
-    local)
-        SERVER_HOST="192.168.3.182"
-        TRUSTSTORE="../certs/whisper.pem"
-        ;;
-    remote)
-        SERVER_HOST="104.156.238.116"
-        TRUSTSTORE="whisper.pem"
-        ;;
-    *)
-        echo "Error: Unknown server type $SRV"
-        exit 1;;
-esac
+SERVER_HOST="192.168.3.182"
+TRUSTSTORE="../../certs/whisper.pem"
 
 case ${SSL} in
     false)
@@ -97,11 +82,9 @@ MQTT_SERVER_URI="${URI_PREFIX}${SERVER_HOST}:${MQTT_SERVER_PORT}"
     --appkey=${APPKEY} \
     --apiserver="${API_SERVER_URL}" \
     --mqttserver="${MQTT_SERVER_URI}" \
-    --apiserver="${API_SERVER_URL}" \
-    --mqttserver="${MQTT_SERVER_URI}" \
     --truststore="${TRUSTSTORE}" \
     --logleve=4 \
-    --deviceid="linux-platform-${USR}-${SRV}" \
-    --data-location="${PWD}/${USR}-${SRV}" \
-    --logfile=${PWD}/${USR}-${SRV}.log
+    --deviceid="linux-platform-${USR}" \
+    --data-location="${PWD}/${USR}" \
+    --logfile=${PWD}/${USR}.log
 
