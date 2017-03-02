@@ -42,7 +42,7 @@ drop_dist_libs() {
     done
 }
 
-BINDING_PATH="../../WhisperManagedCore-Android"
+BINDING_PATH="../../android/ManagedWhisper"
 DEST_PATH="${BINDING_PATH}/app/distribution"
 SOURCE_PATH="./_dist"
 
