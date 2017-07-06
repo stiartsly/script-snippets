@@ -9,7 +9,7 @@ build_android_dist() {
 }
 
 drop_dist_headers() {
-    FILES="whisper.h whisper_ext.h whisper_portforwarding.h whisper_session.h"
+    FILES="whisper.h whisper_ext.h whisper_session.h"
 
     for f in ${FILES}; do
         echo "Copying header $f from $1 to $2"
@@ -19,9 +19,9 @@ drop_dist_headers() {
 }
 
 drop_libwhisper() {
-    echo "Copying library libwhisper.a from $1 to $2"
+    echo "Copying library libwmwhisper.a from $1 to $2"
     echo ""
-    cp -f $1/libwhisper.a $2/.
+    cp -f $1/libwmwhisper.a $2/.
 }
 
 drop_dist_libs() {

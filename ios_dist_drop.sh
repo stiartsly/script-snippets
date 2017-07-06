@@ -9,7 +9,7 @@ build_ios_dist() {
 }
 
 drop_dist_headers() {
-    FILES="whisper.h whisper_ext.h whisper_portforwarding.h whisper_session.h"
+    FILES="whisper.h whisper_ext.h whisper_session.h"
 
     for f in ${FILES}; do
         echo "Copying header $f from $1 to $2"
@@ -21,7 +21,7 @@ drop_dist_headers() {
 drop_dist_libs() {
     LIBS1="cjson crypto ssl neon paho-mqtt3cs z sodium"
     LIBS2="pj pjlib-util pjnath pjmedia"
-    LIBS3="wmcommon wmcore wmsession wmportforwarding"
+    LIBS3="wmcommon wmcore wmsession"
 
     for lib in ${LIBS1} ${LIBS2} ${LIBS3}; do
         echo "Copying library ${lib} from $1 to $2"
@@ -66,6 +66,6 @@ fi
 #build_ios_dist
 
 drop_dist_headers ${SOURCE_PATH}/iOS-arm/debug/include ${DEST_PATH}/include
-drop_dist_libs ${SOURCE_PATH}/lipo/debug ${DEST_PATH}/libs
+drop_dist_libs ${SOURCE_PATH}/lipo/debug ${DEST_PATH}/libs/iOS
 
 exit 0
