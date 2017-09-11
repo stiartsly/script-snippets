@@ -15,7 +15,7 @@ case "$(uname -s)" in
 esac
 
 USR=stiartsly
-SSL=false
+SSL=true
 
 while [ x"$1" != x ]; do
 case $1 in
@@ -47,7 +47,8 @@ case $USR in
         exit 1;;
 esac
 
-SERVER_HOST="192.168.3.182"
+#SERVER_HOST="192.168.3.182"
+SERVER_HOST=whisper.freeddns.org
 TRUSTSTORE="../../certs/whisper.pem"
 
 case ${SSL} in
@@ -68,7 +69,7 @@ case ${SSL} in
         exit 1;;
 esac
 
-export ${LD_ENV}=${HOME}/workspace/wicore5.0/build/_dist/${HOST}-x86_64/debug/lib
+export ${LD_ENV}=${HOME}/Projects/whisper/whisper-managed-core/build/_dist/${HOST}-x86_64/debug/lib
 
 APPID="7sRQjDsniyuHdZ9zsQU9DZbMLtQGLBWZ78yHWgjPpTKm" 
 APPKEY="6tzPPAgSACJdScX79wuzMNPQTWkRLZ4qEdhLcZU6q4B9" \
@@ -83,7 +84,7 @@ MQTT_SERVER_URI="${URI_PREFIX}${SERVER_HOST}:${MQTT_SERVER_PORT}"
     --apiserver="${API_SERVER_URL}" \
     --mqttserver="${MQTT_SERVER_URI}" \
     --truststore="${TRUSTSTORE}" \
-    --logleve=4 \
+    --logleve=7 \
     --deviceid="linux-platform-${USR}" \
     --data-location="${PWD}/${USR}" \
     --logfile=${PWD}/${USR}.log
