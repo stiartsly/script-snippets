@@ -47,7 +47,6 @@ case $USR in
         exit 1;;
 esac
 
-#SERVER_HOST="192.168.3.182"
 SERVER_HOST=whisper.freeddns.org
 TRUSTSTORE="../../certs/whisper.pem"
 
@@ -69,14 +68,14 @@ case ${SSL} in
         exit 1;;
 esac
 
-export ${LD_ENV}=${HOME}/Projects/whisper/whisper-managed-core/build/_dist/${HOST}-x86_64/debug/lib
+export ${LD_ENV}=${HOME}/Projects/xian/whisper/build/_dist/${HOST}-x86_64/vanilla/debug/lib
 
 APPID="7sRQjDsniyuHdZ9zsQU9DZbMLtQGLBWZ78yHWgjPpTKm" 
 APPKEY="6tzPPAgSACJdScX79wuzMNPQTWkRLZ4qEdhLcZU6q4B9" \
 API_SERVER_URL="${URL_PREFIX}${SERVER_HOST}:${API_SERVER_PORT}/web/api"
 MQTT_SERVER_URI="${URI_PREFIX}${SERVER_HOST}:${MQTT_SERVER_PORT}"
 
-./wmshell \
+./wshell \
     --login="${LOGIN}" \
     --password="password" \
     --appid=${APPID} \
