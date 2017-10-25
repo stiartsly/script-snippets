@@ -11,7 +11,7 @@ case ${HOST} in
         exit 1;;
 esac
 
-DSO_PATH="${PWD}/../../build/_dist/${HOST}-${ARCH}/debug/lib"
+DSO_PATH="${PWD}/../../build/_dist/${HOST}-${ARCH}/vanilla/debug/lib"
 
 if [ ! -d ${DSO_PATH} ]; then
      echo "Error: whisper library path ${DSO_PATH} not exist"
@@ -20,10 +20,10 @@ fi
 
 case ${HOST} in
     "Linux")
-        LD_LIBRARY_PATH="${DSO_PATH}" ./wmpfd --deviceid=wmpfdserver -c server.conf $*
+        LD_LIBRARY_PATH="${DSO_PATH}" ./wpfd --deviceid=wpfdserver -c server.conf $*
         ;;
     "Darwin")
-        DYLD_LIBRARY_PATH="${DSO_PATH}" ./wmpfd --device=wmpfdserver -c server.conf $*
+        DYLD_LIBRARY_PATH="${DSO_PATH}" ./wpfd --device=wpfdserver -c server.conf $*
         ;;
 esac
 
