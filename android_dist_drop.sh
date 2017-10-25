@@ -19,14 +19,17 @@ drop_dist_headers() {
 }
 
 drop_libwhisper() {
-    echo "Copying library libwmwhisper.a from $1 to $2"
+    echo "Copying library libwhisper.a from $1 to $2"
     echo ""
-    cp -f $1/libwmwhisper.a $2/.
+    if [ ! -d $2 ]; then
+        mkdir -p $2
+    fi
+    cp -f $1/libwhisper.a $2/.
 }
 
 drop_dist_libs() {
     for m in arm arm64 x86 x86_64; do
-        LIB_PATH=$1/Android-$m/debug/lib
+        LIB_PATH=$1/Android-$m/vanilla/debug/lib
         case $m in
             arm)
                 drop_libwhisper ${LIB_PATH} $2/armeabi
@@ -42,7 +45,7 @@ drop_dist_libs() {
     done
 }
 
-BINDING_PATH="../../android/ManagedWhisper"
+BINDING_PATH="../../android-whisper"
 DEST_PATH="${BINDING_PATH}/app/distribution"
 SOURCE_PATH="./_dist"
 
@@ -77,7 +80,7 @@ fi
 
 #build_android_dist
 
-drop_dist_headers ${SOURCE_PATH}/Android-arm/debug/include ${DEST_PATH}/include
+drop_dist_headers ${SOURCE_PATH}/Android-arm/vanilla/debug/include ${DEST_PATH}/include
 drop_dist_libs ${SOURCE_PATH} ${DEST_PATH}/libs
 
 exit 0
